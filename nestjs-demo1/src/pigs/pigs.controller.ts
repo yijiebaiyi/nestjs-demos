@@ -1,13 +1,14 @@
 /*
  * @Author: tuojinxin
  * @Date: 2023-05-09 15:52:05
- * @LastEditTime: 2023-05-09 16:21:39
+ * @LastEditTime: 2023-05-09 21:42:19
  * @LastEditors: tuojinxin
  * @Description:
  */
-import { Body, Controller, Get, Inject, Post } from '@nestjs/common';
+import { Body, Controller, ForbiddenException, Get, HttpException, HttpStatus, Inject, Post } from '@nestjs/common';
 import { PigsService } from './pigs.service';
 import { Pigs } from './pigs.interface';
+import { HttpExceptionFilter } from 'src/http-exception/http-exception.filter';
 
 @Controller('pigs')
 export class PigsController {
@@ -22,6 +23,7 @@ export class PigsController {
 
     @Get()
     async findAll() {
+        console.log("this is findall function")
         return this.pigsService.findAll();
     }
 
@@ -29,5 +31,10 @@ export class PigsController {
     async create(@Body() body: Pigs) {
         await this.pigsService.createPig(body)
         return "success";
+    }
+
+    @Get("/err")
+    async err() {
+        throw new ForbiddenException();
     }
 }

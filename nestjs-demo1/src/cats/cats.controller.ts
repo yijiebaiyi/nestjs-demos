@@ -1,4 +1,4 @@
-import { Controller, Req, Res, Get, Post, Put, Delete, Body, Param, HttpCode, HttpStatus, Header, Redirect, Query } from '@nestjs/common';
+import { Controller, Req, Res, Get, Post, Put, Delete, Body, Param, HttpCode, HttpStatus, Header, Redirect, Query, ForbiddenException } from '@nestjs/common';
 import { Observable, of } from 'rxjs';
 import { CatCreateDTO } from './cats.dto';
 import { Request, Response } from "express";
@@ -71,5 +71,10 @@ export class CatsController {
     @Get("platformjson")
     async platformJson(@Res() res: Response) {
         res.status(HttpStatus.OK).json({ msg: "success" })
+    }
+
+    @Get('/err')
+    async testerr() {
+        throw new ForbiddenException();
     }
 }

@@ -1,0 +1,23 @@
+###
+GET http://localhost:3000/err/test1 HTTP/1.1
+
+###
+GET http://localhost:3000/err/test2 HTTP/1.1
+
+###
+GET http://localhost:3000/err/test3 HTTP/1.1
+
+###
+GET http://localhost:3000/err/test4 HTTP/1.1
+
+###
+GET http://localhost:3000/cats/err HTTP/1.1
+
+###
+GET http://localhost:3000/pigs/err HTTP/1.1
+
+###
+GET http://localhost:3000/err/test5 HTTP/1.1
+
+###
+GET http://localhost:3000/err/test6 HTTP/1.1

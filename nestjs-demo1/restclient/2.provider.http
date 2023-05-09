@@ -2,7 +2,7 @@ POST http://localhost:3000/pigs HTTP/1.1
 Content-Type:   application/json
 
 {
-    "name":"zhu16",
+    "name":"zhu18",
     "age":1
 }
 
