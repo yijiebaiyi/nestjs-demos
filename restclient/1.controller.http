@@ -1,0 +1,42 @@
+###
+GET http://localhost:3000/cats?name=lisi HTTP/1.1
+
+###
+GET http://localhost:3000/cats/abssssssaa HTTP/1.1
+
+###
+GET http://localhost:3000/cats/redirect?url=https://www.sina.com HTTP/1.1
+
+
+###
+GET http://localhost:3000/cats/observable HTTP/1.1
+
+###
+GET http://localhost:3000/cats/async HTTP/1.1
+
+###
+POST http://localhost:3000/cats/new HTTP/1.1
+Content-Type: application/json
+
+{
+    "name": "zhangsan"
+}
+
+###
+PUT http://localhost:3000/cats/1 HTTP/1.1
+Content-Type: application/json
+
+{
+    "name": "zhangsan"
+}
+
+###
+POST http://localhost:3000/cats/platformsend HTTP/1.1
+Content-Type: application/json
+
+{
+    "name": "zhangsan"
+}
+
+###
+GET  http://localhost:3000/cats/platformjson HTTP/1.1
