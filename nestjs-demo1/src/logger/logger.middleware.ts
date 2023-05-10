@@ -1,7 +1,7 @@
 /*
  * @Author: tuojinxin
  * @Date: 2023-05-09 17:50:38
- * @LastEditTime: 2023-05-09 18:10:33
+ * @LastEditTime: 2023-05-10 15:20:55
  * @LastEditors: tuojinxin
  * @Description: 
  */
@@ -10,7 +10,7 @@ import { Injectable, NestMiddleware } from '@nestjs/common';
 @Injectable()
 export class LoggerMiddleware implements NestMiddleware {
   use(req: any, res: any, next: () => void) {
-    console.log("hello world")
+    console.log("this is logger middleware")
     next();
   }
 }

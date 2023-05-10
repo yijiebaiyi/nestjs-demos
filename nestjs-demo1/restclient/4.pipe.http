@@ -1,0 +1,39 @@
+GET http://localhost:3000/dogs/af HTTP/1.1
+
+###
+GET http://localhost:3000/dogs/test/ad HTTP/1.1
+
+###
+GET http://localhost:3000/dogs/test2/ad HTTP/1.1
+
+###
+POST http://localhost:3000/dogs/test3 HTTP/1.1
+Content-Type: application/json
+
+{
+    "name":"狗小花",
+    "age":2222
+}
+
+
+###
+POST http://localhost:3000/dogs/test4 HTTP/1.1
+Content-Type: application/json
+
+{
+    "name":"狗小花狗小花狗小花狗小花狗小花狗小花狗小花",
+    "age":999999
+}
+
+
+###
+POST http://localhost:3000/dogs/test5 HTTP/1.1
+Content-Type: application/json
+
+{
+    "name":"狗小花狗小花狗小花狗小花狗小花狗小花狗小花",
+    "age":999999
+}
+
+###
+GET http://localhost:3000/dogs/test6/123ad HTTP/1.1

@@ -1,7 +1,7 @@
 /*
  * @Author: tuojinxin
  * @Date: 2023-05-09 15:50:14
- * @LastEditTime: 2023-05-09 22:07:21
+ * @LastEditTime: 2023-05-10 17:36:18
  * @LastEditors: tuojinxin
  * @Description: 
  */
@@ -9,6 +9,7 @@ import { HttpAdapterHost, NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { HttpExceptionFilter } from './http-exception/http-exception.filter';
 import { AllExceptionFilter } from './http-exception/all-exception.filter';
+import { ValidatorValidatePipe } from './feature/dogs/validator-validate/validator-validate.pipe';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -19,6 +20,8 @@ async function bootstrap() {
   // 全局中间件
   //app.use(logger);
 
+  // 全局管道
+  // app.useGlobalPipes(new ValidatorValidatePipe());
 
   /**
    * 
