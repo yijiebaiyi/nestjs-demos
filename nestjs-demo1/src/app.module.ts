@@ -15,12 +15,14 @@ import { APP_FILTER } from '@nestjs/core';
 import { HttpExceptionFilter } from './http-exception/http-exception.filter';
 import { DogsController } from './feature/dogs/dogs.controller';
 import { DogsModule } from './feature/dogs/dogs.module';
+import { RabbitsController } from './feature/rabbits/rabbits.controller';
+import { RabbitsModule } from './feature/rabbits/rabbits.module';
 
 // Global()，使模块成为全局作用域，而不用引入他们
 @Global()
 @Module({
-  imports: [PigsModule, DogsModule],
-  controllers: [AppController, CatsController, ErrController, DogsController],
+  imports: [PigsModule, DogsModule, RabbitsModule],
+  controllers: [AppController, CatsController, ErrController, DogsController, RabbitsController],
   providers: [AppService,
     // {
     //   provide: APP_FILTER,

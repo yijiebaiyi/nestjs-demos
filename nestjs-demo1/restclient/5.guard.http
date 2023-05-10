@@ -1,0 +1,6 @@
+###
+GET http://localhost:3000/rabbits/test1?role=user HTTP/1.1
+
+
+###
+GET http://localhost:3000/rabbits/test1?role=admin HTTP/1.1

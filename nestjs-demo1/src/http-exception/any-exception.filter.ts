@@ -1,7 +1,7 @@
 /*
  * @Author: tuojinxin
  * @Date: 2023-05-09 21:47:54
- * @LastEditTime: 2023-05-09 21:58:57
+ * @LastEditTime: 2023-05-10 20:48:45
  * @LastEditors: tuojinxin
  * @Description: 
  */
@@ -12,6 +12,7 @@ import { Catch, ExceptionFilter, ArgumentsHost, HttpException, HttpStatus } from
 @Catch()
 export class AnyExceptionFilter implements ExceptionFilter {
     catch(exception: unknown, host: ArgumentsHost) {
+        console.log("[filter: ] this is any exception filters")
         const ctx = host.switchToHttp();
         const res = ctx.getResponse();
         const req = ctx.getRequest();
