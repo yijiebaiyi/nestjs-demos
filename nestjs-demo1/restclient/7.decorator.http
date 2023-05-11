@@ -1,0 +1,8 @@
+###
+GET http://localhost:3000/sheepes/test1 HTTP/1.1
+
+###
+GET http://localhost:3000/sheepes/test2 HTTP/1.1
+
+###
+GET http://localhost:3000/sheepes/test3?role=admin HTTP/1.1

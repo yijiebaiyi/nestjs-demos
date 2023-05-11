@@ -11,6 +11,7 @@ import { HttpExceptionFilter } from './http-exception/http-exception.filter';
 import { AllExceptionFilter } from './http-exception/all-exception.filter';
 import { ValidatorValidatePipe } from './feature/dogs/validator-validate/validator-validate.pipe';
 import { RolesGuard } from './feature/rabbits/guard/roles/roles.guard';
+import { LoggingInterceptor } from './feature/ducks/interceptor/logging/logging.interceptor';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -26,6 +27,9 @@ async function bootstrap() {
 
   // 全局守卫
   // app.useGlobalGuards(new RolesGuard());
+
+  // 全局拦截器
+  // app.useGlobalInterceptors(new LoggingInterceptor())
 
   /**
    * 
