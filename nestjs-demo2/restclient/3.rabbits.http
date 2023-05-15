@@ -1,0 +1,4 @@
+GET http://localhost:3000/rabbits HTTP/1.1
+
+###
+GET http://localhost:3000/rabbits/mod HTTP/1.1
