@@ -19,15 +19,40 @@ import { HelloService } from './feature/rabbits/hello.service';
 import { PigsController } from './feature/pigs/pigs.controller';
 import { PigsService } from './feature/pigs/pigs.service';
 import { PigsModule } from './feature/pigs/pigs.module';
+import { MicroController } from './feature/micro/micro.controller';
+import { MicroModule } from './feature/micro/micro.module';
+import { ClientsModule, Transport } from '@nestjs/microservices';
 
-
+// 动态模块注册和微服务注册必须在app.module进行
 @Module({
   imports: [
+    ClientsModule.register(
+      [
+          {
+              name:"SUM_SERVICE",
+              transport: Transport.TCP,
+              options: {
+                  port: 8888
+              }
+          }
+      ]
+    ),
     CatsModule,
     ConfigModule.register({folder: "./config"}),
-    PigsModule
+    PigsModule,
+    MicroModule
   ],
-  controllers: [AppController, DogsController, RabbitsController, PigsController],
-  providers: [AppService, DogsService, RabbitsService, CommonService, HelloService, PigsService],
+  controllers: [AppController, DogsController, RabbitsController, PigsController, MicroController],
+  providers: [
+      // 避免硬编码，需要从另一个服务(比如 ConfigService )获取微服务配置而不是硬编码在客户端程序中
+      // {
+      //   provide: 'MATH_SERVICE',
+      //   useFactory: (configService: ConfigService) => {
+      //     const mathSvcOptions = configService.getMathSvcOptions();
+      //     return ClientProxyFactory.create(mathSvcOptions);
+      //   },
+      //   inject: [ConfigService],
+      // },
+    AppService, DogsService, RabbitsService, CommonService, HelloService, PigsService],
 })
 export class AppModule { }
