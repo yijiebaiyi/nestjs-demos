@@ -1,12 +1,19 @@
 import { Controller, Get, Inject, Query } from '@nestjs/common';
-import { ClientProxy } from '@nestjs/microservices';
+import { ClientGrpc, ClientProxy } from '@nestjs/microservices';
 import { timeout } from 'rxjs'; 
 
 @Controller('micro')
 export class MicroController {
 
+    private heroesService;
+
+    constructor(@Inject('HERO_PACKAGE') private client: ClientGrpc){}
+    onModuleInit() {
+        this.heroesService = this.client.getService('HeroesService');
+    }
+
     @Inject("SUM_SERVICE")
-    sumService: ClientProxy;
+    sumService: ClientProxy; 
 
     @Get()
     test(@Query('sum') sum:string){
@@ -28,5 +35,11 @@ export class MicroController {
     @Get("timeot")
     async testtimeot(@Query('msg') msg:string){
         return this.sumService.send('msg', msg).pipe(timeout(5000));
+    }
+
+    @Get("testgrpc")
+    async testgrpc(){
+        return this.heroesService.findOne({id:1});
+        return "hello nestjs";
     }
 }

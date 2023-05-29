@@ -22,7 +22,9 @@ import { PigsModule } from './feature/pigs/pigs.module';
 import { MicroController } from './feature/micro/micro.controller';
 import { MicroModule } from './feature/micro/micro.module';
 import { ClientsModule, Transport } from '@nestjs/microservices';
-
+import { join } from 'path';
+// console.log("当前目录：", __dirname);
+// console.log("合并后的：", join(__dirname , '../share/hero.proto'))
 // 动态模块注册和微服务注册必须在app.module进行
 @Module({
   imports: [
@@ -34,13 +36,32 @@ import { ClientsModule, Transport } from '@nestjs/microservices';
               options: {
                   port: 8888
               }
-          }
+          }, 
+          {
+            name: 'HERO_PACKAGE',
+            transport: Transport.GRPC,
+            options: {
+              url: "localhost:5000",
+              package: 'hero',
+              protoPath: join(__dirname, '../share/hero.proto'),
+            },
+          },
       ]
     ),
+    // ClientsModule.register([
+    //   {
+    //     name: 'HERO_PACKAGE',
+    //     transport: Transport.GRPC,
+    //     options: {
+    //       package: 'hero',
+    //       protoPath: join(__dirname, '../share/hero.proto'),
+    //     },
+    //   },
+    // ]),
     CatsModule,
     ConfigModule.register({folder: "./config"}),
     PigsModule,
-    MicroModule
+    MicroModule,
   ],
   controllers: [AppController, DogsController, RabbitsController, PigsController, MicroController],
   providers: [

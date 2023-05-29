@@ -8,3 +8,6 @@ GET http://localhost:3000/micro/obser?sum=1,2,44,3,4 HTTP/1.1
 
 ###
 GET http://localhost:3000/micro/timeot?msg=john HTTP/1.1
+
+###
+GET http://localhost:3000/micro/testgrpc HTTP/1.1
