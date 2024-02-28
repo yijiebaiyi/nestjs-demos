@@ -1,2 +1,2 @@
 # nestjs-demos
-sequelize
+nestjs

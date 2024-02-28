@@ -1,7 +1,7 @@
 /*
  * @Author: tuojinxin
  * @Date: 2023-05-09 15:50:14
- * @LastEditTime: 2023-05-11 16:12:17
+ * @LastEditTime: 2024-02-27 13:33:19
  * @LastEditors: tuojinxin
  * @Description: 
  */
@@ -20,13 +20,16 @@ import { RabbitsModule } from './feature/rabbits/rabbits.module';
 import { DucksController } from './feature/ducks/ducks.controller';
 import { DucksModule } from './feature/ducks/ducks.module';
 import { SheepesController } from './feature/sheepes/sheepes.controller';
+import { ScheduleService } from './schedule.service';
+import { ScheduleModule } from '@nestjs/schedule';
 
 // Global()，使模块成为全局作用域，而不用引入他们
 @Global()
 @Module({
-  imports: [PigsModule, DogsModule, RabbitsModule, DucksModule],
+  imports: [PigsModule, DogsModule, RabbitsModule, DucksModule, ScheduleModule.forRoot()],
   controllers: [AppController, CatsController, ErrController, DogsController, RabbitsController, DucksController, SheepesController],
   providers: [AppService,
+    ScheduleService
     // {
     //   provide: APP_FILTER,
     //   useClass: HttpExceptionFilter, // 全局使用过滤器
